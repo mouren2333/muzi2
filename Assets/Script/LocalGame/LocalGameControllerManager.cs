@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocalGameController: MonoBehaviour
+public class LocalGameControllerManager: MonoBehaviour
 {
     public string Animator_name;
 
@@ -19,37 +19,37 @@ public class LocalGameController: MonoBehaviour
     private void Update()
     {
         ActionControl_Player1();
+        ActionControl_Player2();
     }
-    public void ActionControl_Player1()
-    {
-        Animator _anim=Player1.GetComponent<Animator>();
 
-        if(Input.GetKeyDown(KeyCode.A))             //Defence
+    public void ActionControl(KeyCode a , KeyCode d, KeyCode w, KeyCode s,GameObject player)
+    {
+        Animator _anim = player.GetComponent<Animator>();
+
+        if (Input.GetKeyDown(a))             //Defence
         {
             _anim.SetInteger(Animator_name, 1);
         }
-        else if(Input.GetKeyDown(KeyCode.D))        //Attack
+        else if (Input.GetKeyDown(d))        //Attack
         {
             _anim.SetInteger(Animator_name, 2);
         }
-        else if (Input.GetKeyDown(KeyCode.W))       //GoBack
+        else if (Input.GetKeyDown(w))       //GoBack
         {
             _anim.SetInteger(Animator_name, 3);
         }
-        else if (Input.GetKeyDown(KeyCode.S))       //Down
+        else if (Input.GetKeyDown(s))       //Down
         {
             _anim.SetInteger(Animator_name, 4);
         }
-        
-        if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
-        {
-            _anim.SetInteger(Animator_name, 0);
-        }
+    }
 
+    public void ActionControl_Player1()
+    {
+        ActionControl(KeyCode.A, KeyCode.D, KeyCode.W, KeyCode.S, Player1);
     }
     public void ActionControl_Player2()
     {
-
-
+        ActionControl(KeyCode.J, KeyCode.L, KeyCode.I, KeyCode.K, Player2);
     }
 }
