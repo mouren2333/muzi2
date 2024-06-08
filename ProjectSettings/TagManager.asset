@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Player1_Attack
+  - Player2_Attack
+  - Player1_Press
+  - Player2_Press
   layers:
   - Default
   - TransparentFX
